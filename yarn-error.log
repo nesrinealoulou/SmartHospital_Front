@@ -1,0 +1,98 @@
+Arguments: 
+  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js install
+
+PATH: 
+  C:\Program Files\Python310\Scripts\;C:\Program Files\Python310\;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\VMware\VMware Workstation\bin\;C:\oraclexe\app\oracle\product\10.2.0\server\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\Git\cmd;C:\Program Files\TortoiseSVN\bin;C:\Program Files\nodejs\;C:\ProgramData\chocolatey\bin;C:\Program Files (x86)\Yarn\bin\;C:\Program Files\Docker\Docker\resources\bin;C:\ProgramData\DockerDesktop\version-bin;C:\Program Files\gradle-7.4\bin;C:\Program Files\MongoDB\Server\5.0\bin;C:\Users\USER\AppData\Local\Programs\Microsoft VS Code\bin;C:\xampp\php;C:\Users\USER\AppData\Roaming\npm;C:\Users\USER\AppData\Local\Yarn\bin;C:\Program Files\JetBrains\PyCharm 2021.3.2\bin;
+
+Yarn version: 
+  1.23.0-20200615.1913
+
+Node version: 
+  16.14.0
+
+Platform: 
+  win32 x64
+
+Trace: 
+  Error: EPERM: operation not permitted, unlink 'C:\Users\USER\Desktop\template\node_modules\node-sass\vendor\win32-x64-93\binding.node'
+
+npm manifest: 
+  {
+    "name": "argon-dashboard-react",
+    "version": "1.2.1",
+    "description": "React version of Argon Dashboard by Creative Tim",
+    "main": "index.js",
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/creativetimofficial/argon-dashboard-react.git"
+    },
+    "keywords": [
+      "react",
+      "reactjs",
+      "argon",
+      "argon-react",
+      "dashboard",
+      "dashboard-react",
+      "argon-dashboard",
+      "argon-dashboard-react"
+    ],
+    "author": "Creative Tim",
+    "license": "MIT",
+    "bugs": {
+      "url": "https://github.com/creativetimofficial/argon-dashboard-react/issues"
+    },
+    "homepage": "https://demos.creative-tim.com/argon-dashboard-react/",
+    "scripts": {
+      "start": "react-scripts start",
+      "build": "react-scripts build",
+      "test": "react-scripts test",
+      "eject": "react-scripts eject",
+      "install:clean": "rm -rf node_modules/ && rm -rf package-lock.json && npm install && npm start",
+      "compile:scss": "node-sass --importer node_modules/node-sass-package-importer/dist/cli.js src/assets/scss/argon-dashboard-react.scss src/assets/css/argon-dashboard-react.css",
+      "minify:scss": "node-sass --importer node_modules/node-sass-package-importer/dist/cli.js src/assets/scss/argon-dashboard-react.scss src/assets/css/argon-dashboard-react.min.css --output-style compressed",
+      "map:scss": "node-sass --importer node_modules/node-sass-package-importer/dist/cli.js src/assets/scss/argon-dashboard-react.scss src/assets/css/argon-dashboard-react.css --source-map true",
+      "build:scss": "npm run compile:scss && npm run minify:scss && npm run map:scss"
+    },
+    "eslintConfig": {
+      "extends": "react-app"
+    },
+    "browserslist": [
+      ">0.2%",
+      "not dead",
+      "not ie <= 11",
+      "not op_mini all"
+    ],
+    "dependencies": {
+      "@fortawesome/fontawesome-free": "5.15.3",
+      "bootstrap": "4.6.0",
+      "chart.js": "2.9.4",
+      "classnames": "2.3.1",
+      "moment": "2.29.1",
+      "node-sass": "6.0.1",
+      "node-sass-package-importer": "5.3.2",
+      "nouislider": "15.2.0",
+      "react": "17.0.2",
+      "react-chartjs-2": "2.11.1",
+      "react-copy-to-clipboard": "5.0.3",
+      "react-datetime": "3.0.4",
+      "react-dom": "17.0.2",
+      "react-router-dom": "5.2.0",
+      "react-scripts": "4.0.3",
+      "reactstrap": "8.9.0"
+    },
+    "devDependencies": {
+      "gulp": "4.0.2",
+      "gulp-append-prepend": "1.0.9"
+    },
+    "optionalDependencies": {
+      "eslint-plugin-flowtype": "5.8.0",
+      "jquery": "3.6.0",
+      "typescript": "4.3.5"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
