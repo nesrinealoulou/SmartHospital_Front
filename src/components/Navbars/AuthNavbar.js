@@ -17,7 +17,9 @@ const AdminNavbar = () => {
     <>
       <Navbar className="navbar-top navbar-horizontal navbar-dark" expand="md">
         <Container className="px-4">
-          <NavbarBrand to="/" tag={Link}>
+          <NavbarBrand    className="nav-link-icon"
+                  to="/auth/home"
+                  tag={Link}>
             <span className="nav-link-inner--text">Smart Hospital</span>
           </NavbarBrand>
           <button className="navbar-toggler" id="navbar-collapse-main">
@@ -43,7 +45,7 @@ const AdminNavbar = () => {
               <NavItem>
                 <NavLink
                   className="nav-link-icon"
-                  to="/auth/register"
+                  to="/auth/login"
                   tag={Link}
                 >
                   <span className="nav-link-inner--text">Employee</span>
