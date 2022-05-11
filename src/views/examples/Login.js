@@ -20,6 +20,9 @@ const Login = () => {
             <Col lg="5" md="7">
                 <Card className="bg-secondary shadow border-0">
                     <CardBody className="px-lg-5 py-lg-5">
+                        <div className="text-center text-muted mb-4">
+                            <h2>Let's Sign you In</h2>
+                        </div>
                         <Form role="form">
                             <FormGroup className="mb-3">
                                 <InputGroup className="input-group-alternative">
@@ -82,15 +85,6 @@ const Login = () => {
                         >
                             <small>Forgot password?</small>
                         </a>
-                    </Col>
-                    <Col className="text-right" xs="6">
-                        <Link
-                            className="nav-link-icon"
-                            to="/auth/register"
-                            tag={Link}
-                        >
-                            <span className="text-light">Create new account</span>
-                        </Link>
                     </Col>
                 </Row>
             </Col>

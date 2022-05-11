@@ -13,14 +13,14 @@ import {
     Col,
 } from "reactstrap";
 
-const Register = () => {
+const RegisterEmployee = () =>{
     return (
         <>
             <Col lg="10" md="8">
                 <Card className="bg-secondary shadow border-0">
                     <CardBody className="px-lg-5 py-lg-2">
                         <div className="text-center text-muted mb-4">
-                            <h2>Register to Hospital</h2>
+                            <h2>Employee Registration to Hospital</h2>
                         </div>
                         <Form role="form">
                             <div style={{display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gridGap: 20}}>
@@ -36,7 +36,7 @@ const Register = () => {
                                 </FormGroup>
                                 <FormGroup>
                                     <InputGroup className="input-group-alternative mb-3">
-                                        <Input placeholder="Contact Number" type="text"/>
+                                        <Input placeholder="(+216) Phone Number" type="text"/>
                                     </InputGroup>
                                 </FormGroup>
                             </div>
@@ -71,8 +71,35 @@ const Register = () => {
                                     </InputGroup>
                                 </FormGroup>
                                 <FormGroup>
+                                    <InputGroup className="input-group-alternative">
+                                        <InputGroupAddon addonType="prepend">
+                                            <InputGroupText>
+                                                <i className="ni ni-lock-circle-open"/>
+                                            </InputGroupText>
+                                        </InputGroupAddon>
+                                        <Input
+                                            placeholder="Confirm Password"
+                                            type="password"
+                                            autoComplete="new-password"
+                                        />
+                                    </InputGroup>
+                                </FormGroup>
+                            </div>
+
+                            <div style={{display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gridGap: 20}}>
+                                <FormGroup>
                                     <InputGroup className="input-group-alternative mb-3">
-                                        <Input placeholder="CIN or Passport " type="text"/>
+                                        <Input placeholder="Gender" type="text"/>
+                                    </InputGroup>
+                                </FormGroup>
+                                <FormGroup>
+                                    <InputGroup className="input-group-alternative mb-3">
+                                        <Input placeholder="Date_of_Birth" type="text"/>
+                                    </InputGroup>
+                                </FormGroup>
+                                <FormGroup>
+                                    <InputGroup className="input-group-alternative mb-3">
+                                        <Input placeholder="Speciality" type="text"/>
                                     </InputGroup>
                                 </FormGroup>
                             </div>
@@ -85,30 +112,12 @@ const Register = () => {
                                 </FormGroup>
                                 <FormGroup>
                                     <InputGroup className="input-group-alternative mb-3">
-                                        <Input placeholder="Date_of_Birth" type="text"/>
+                                        <Input placeholder="CIN" type="text"/>
                                     </InputGroup>
                                 </FormGroup>
                                 <FormGroup>
                                     <InputGroup className="input-group-alternative mb-3">
-                                        <Input placeholder="Address" type="text"/>
-                                    </InputGroup>
-                                </FormGroup>
-                            </div>
-
-                            <div style={{display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gridGap: 20}}>
-                                <FormGroup>
-                                    <InputGroup className="input-group-alternative mb-3">
-                                        <Input placeholder="Occupation" type="text"/>
-                                    </InputGroup>
-                                </FormGroup>
-                                <FormGroup>
-                                    <InputGroup className="input-group-alternative mb-3">
-                                        <Input placeholder="Chronic_disease" type="text"/>
-                                    </InputGroup>
-                                </FormGroup>
-                                <FormGroup>
-                                    <InputGroup className="input-group-alternative mb-3">
-                                        <Input placeholder="Allergy " type="text"/>
+                                        <Input placeholder="Passport" type="text"/>
                                     </InputGroup>
                                 </FormGroup>
                             </div>
@@ -126,4 +135,4 @@ const Register = () => {
         ;
 };
 
-export default Register;
+export default RegisterEmployee;

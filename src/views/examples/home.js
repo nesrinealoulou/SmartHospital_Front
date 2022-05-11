@@ -14,7 +14,6 @@ import {
 } from "reactstrap";
 
 const Home = (props) => {
-    const title = "Welcome to Smart Hospital";
     return (
         <>
             <Col lg="5" md="7">
