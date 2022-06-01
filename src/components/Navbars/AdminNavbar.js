@@ -1,4 +1,4 @@
- import { Link } from "react-router-dom";
+ import {Link, useHistory} from "react-router-dom";
 // reactstrap components
 import {
   DropdownMenu,
@@ -18,6 +18,12 @@ import {
 } from "reactstrap";
 
 const AdminNavbar = (props) => {
+  const history = useHistory();
+  const logout = () => {
+    localStorage.removeItem('access_token');
+    localStorage.removeItem('role');
+    history.push('/auth/login');
+  };
   return (
     <>
       <Navbar className="navbar-top navbar-dark" expand="md" id="navbar-main">
@@ -28,18 +34,7 @@ const AdminNavbar = (props) => {
           >
             {props.brandText}
           </Link>
-          <Form className="navbar-search navbar-search-dark form-inline mr-3 d-none d-md-flex ml-lg-auto">
-            <FormGroup className="mb-0">
-              <InputGroup className="input-group-alternative">
-                <InputGroupAddon addonType="prepend">
-                  <InputGroupText>
-                    <i className="fas fa-search" />
-                  </InputGroupText>
-                </InputGroupAddon>
-                <Input placeholder="Search" type="text" />
-              </InputGroup>
-            </FormGroup>
-          </Form>
+
           <Nav className="align-items-center d-none d-md-flex" navbar>
             <UncontrolledDropdown nav>
               <DropdownToggle className="pr-0" nav>
@@ -48,14 +43,14 @@ const AdminNavbar = (props) => {
                     <img
                       alt="..."
                       src={
-                        require("../../assets/img/theme/team-4-800x800.jpg")
+                        require("../../assets/img/theme/image_doctor.jpg")
                           .default
                       }
                     />
                   </span>
-                  <Media className="ml-2 d-none d-lg-block">
+                  <Media className="ml-2 d-none d-lg-block" onClick={() => {logout()}}>
                     <span className="mb-0 text-sm font-weight-bold">
-                      Jessica Jones
+                      Log out
                     </span>
                   </Media>
                 </Media>

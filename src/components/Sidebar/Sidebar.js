@@ -16,8 +16,8 @@
 
 */
 /*eslint-disable*/
-import { useState } from "react";
-import { NavLink as NavLinkRRD, Link } from "react-router-dom";
+import React, { useState } from "react";
+import {NavLink as NavLinkRRD, Link, Route} from "react-router-dom";
 // nodejs library to set properties for components
 import { PropTypes } from "prop-types";
 
@@ -51,8 +51,10 @@ import {
   Row,
   Col,
 } from "reactstrap";
+import routes from "../../routes";
 
 var ps;
+let route = []
 
 const Sidebar = (props) => {
   const [collapseOpen, setCollapseOpen] = useState();
@@ -70,7 +72,7 @@ const Sidebar = (props) => {
   };
   // creates the links that appear in the left menu / Sidebar
   const createLinks = (routes) => {
-    return routes.map((prop, key) => {
+    return getRoutes(routes).map((prop, key) => {
       return (
         <NavItem key={key}>
           <NavLink
@@ -194,7 +196,7 @@ const Sidebar = (props) => {
                 <Col className="collapse-brand" xs="6">
                   {logo.innerLink ? (
                     <Link to={logo.innerLink}>
-                      <img alt={logo.imgAlt} src={logo.imgSrc} />
+                      <img  className="imgLogo" alt={logo.imgAlt} src={logo.imgSrc} />
                     </Link>
                   ) : (
                     <a href={logo.outterLink}>
@@ -258,22 +260,24 @@ const Sidebar = (props) => {
               </NavLink>
             </NavItem>
           </Nav>
-          <Nav className="mb-md-3" navbar>
-            <NavItem className="active-pro active">
-              <NavLink href="https://www.creative-tim.com/product/argon-dashboard-pro-react?ref=adr-admin-sidebar">
-                <i className="ni ni-spaceship" />
-                Upgrade to PRO
-              </NavLink>
-            </NavItem>
-          </Nav>
         </Collapse>
       </Container>
     </Navbar>
   );
 };
+const getRoutes = (routes) => {
+  if (localStorage.getItem("role") === "patient")
+  {route = routes.filter(prop => prop.role === "patient")
+    console.log(route)
+    return route;}
+  else
+    if (localStorage.getItem("role") === "employee")
+      return routes.filter(prop => prop.role === "employee")
+
+}
 
 Sidebar.defaultProps = {
-  routes: [{}],
+  routes: getRoutes(routes)
 };
 
 Sidebar.propTypes = {
