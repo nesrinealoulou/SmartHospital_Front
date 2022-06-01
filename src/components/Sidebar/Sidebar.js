@@ -251,7 +251,9 @@ const getRoutes = (routes) => {
   else
     if (localStorage.getItem("role") === "employee")
       return routes.filter(prop => prop.role === "employee")
-
+    else
+      if(localStorage.getItem("role") === "admin")
+        return routes.filter(prop => prop.role === "admin")
 }
 
 Sidebar.defaultProps = {

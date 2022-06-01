@@ -28,8 +28,16 @@ button:focus, :focus {
   margin-left: 100px;
   margin-top: 70px;
 }
+.imgdep {
+  width :150px;
+}
+.btn-dep {
+  position: absolute;
+  top:80px;
+  height:50px
+}
 .btn1{
-  right:0px;
+  right:0;
   height: 40px;
   width: 100%
 }
@@ -45,6 +53,9 @@ button:focus, :focus {
 .cardContainer{
   padding: 15px;
 }
+.cardStyle1{
+  margin-bottom: 30px;
+}
 .img{
   margin-left: 2px;
 }
@@ -55,3 +66,4 @@ button:focus, :focus {
   margin-bottom: 15px;
   margin-top: 15px;
 }
+

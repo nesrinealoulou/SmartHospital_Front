@@ -20,6 +20,10 @@ import PatientProfileForDoctor from "./views/examples/PatientProfileForDoctor";
 import HistoryConsultationForDoctor from "./views/examples/HistoryConsultationForDoctor";
 import CurrentConsultationsForPatient from "./views/examples/CurrentConsultationForPatient";
 import EmployeeProfileForPatient from "./views/examples/EmployeeProfileForPatient";
+import PageAcceuilForAdmin from "./views/examples/PageAcceuilForAdmin";
+import DoctorsListForAdmin from "./views/examples/DoctorListForAdmin";
+import DoctorListApprrovment from "./views/examples/AdminEmployeeApprovement";
+import DoctorListForAdmin from "./views/examples/AdminDepartments";
 
 var routes = [
     {
@@ -45,6 +49,14 @@ var routes = [
         component: Index,
         layout: "/admin",
         role:"employee"
+    },
+    {
+        path: "/index",
+        name: "Dashboard",
+        icon: "ni ni-tv-2 text-primary",
+        component: Index,
+        layout: "/admin",
+        role:"admin"
     },
     {
         path: "/index",
@@ -116,6 +128,31 @@ var routes = [
         component: PatientProfile,
         layout: "/admin",
         role:"patient"
+
+    },
+    {
+        path: "/admin-doctor-list",
+        name: "Doctor List",
+        icon: "ni ni-single-02 text-yellow",
+        component: DoctorsListForAdmin,
+        layout: "/admin",
+        role:"admin"
+
+    },{
+        path: "/admin-notApprovedList",
+        name: "Approvement List",
+        icon: "ni ni-single-02 text-yellow",
+        component: DoctorListApprrovment,
+        layout: "/admin",
+        role:"admin"
+
+    },{
+        path: "/admin-departments",
+        name: "Departments",
+        icon: "ni ni-single-02 text-yellow",
+        component: DoctorListForAdmin,
+        layout: "/admin",
+        role:"admin"
 
     },
     {

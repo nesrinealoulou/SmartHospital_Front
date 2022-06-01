@@ -92,7 +92,7 @@ const AppointmentForm = (props) => {
                         Cancel
                     </Button>
                     <Button onClick={addAppointment} color="primary">
-                        Subscribe
+                        Add
                     </Button>
                 </DialogActions>
             </Dialog>
