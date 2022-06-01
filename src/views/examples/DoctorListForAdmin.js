@@ -8,6 +8,9 @@ import {Link} from "@mui/material";
 
 const DoctorListForAdmin = (props) => {
 
+
+
+
     const [employees, setEmployees] = useState([])
     const [idDoctor, setIdDoctor] = useState([])
     const [openPopup, setOpenPopup] = useState(false)
@@ -34,10 +37,11 @@ const DoctorListForAdmin = (props) => {
     return (
         <>
             <UserHeader />
+            <input className="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" />
             <Row className="index cardContainer">
                 {employees.map((emp) =>
                     <Col className="mb-5 mb-xl-0" xl="6">
-                        <Card className="shadow cardStyle">
+                        <Card className="shadow cardStyle1">
                             <CardHeader className="border-0">
                                 <Row className="align-items-center">
                                     <Col lg="6">

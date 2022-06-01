@@ -14,13 +14,13 @@ import {
     Col, NavItem, NavLink,
 } from "reactstrap";
 import axios from "axios";
-import {useState} from "react";
+import React, {useState} from "react";
+import AuthNavbar from "../../components/Navbars/AuthNavbar";
 
 
 const VerfifyOpt = () => {
     const [email, setEmail] = useState("")
     const [otp, setOtp] = useState("")
-    const [verification,setVerification] = useState('verfifyCom')
     const history = useHistory();
 
     const verify = async () => {

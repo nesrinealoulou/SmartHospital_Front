@@ -8,6 +8,8 @@ import {Link} from "@mui/material";
 
 const DoctorsList = (props) => {
 
+
+
     const [employees, setEmployees] = useState([])
     const [idDoctor, setIdDoctor] = useState([])
     const [openPopup, setOpenPopup] = useState(false)
@@ -27,7 +29,7 @@ const DoctorsList = (props) => {
             <Row className="index cardContainer">
                 {employees.map((emp) =>
                     <Col className="mb-5 mb-xl-0" xl="6">
-                        <Card className="shadow cardStyle">
+                        <Card className="shadow cardStyle2">
                             <CardHeader className="border-0">
                                 <Row className="align-items-center">
                                     <Col lg="6">

@@ -11,8 +11,11 @@ import {
     Row,
     Col,
 } from "reactstrap";
+import {useState} from "react";
 
-const AuthNavbar = () => {
+const AuthNavbar = (props) => {
+    const isVerfiyComponet = props.isVerfiyComponet;
+    const[verifyComponet,setVerifyComponent] = useState(isVerfiyComponet === true)
     return (
         <>
             <Navbar className="navbar-top navbar-horizontal navbar-dark" expand="md">
@@ -23,6 +26,7 @@ const AuthNavbar = () => {
                     <button className="navbar-toggler" id="navbar-collapse-main">
                         <span className="navbar-toggler-icon"/>
                     </button>
+                    {!verifyComponet &&
                     <UncontrolledCollapse navbar toggler="#navbar-collapse-main">
                         <Nav className="ml-auto" navbar>
                             <NavItem>
@@ -33,6 +37,7 @@ const AuthNavbar = () => {
                             </NavItem>
                         </Nav>
                     </UncontrolledCollapse>
+                    }
                 </Container>
             </Navbar>
         </>

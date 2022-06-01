@@ -9,6 +9,7 @@ import {Link} from "@mui/material";
 const DoctorListApprrovment = (props) => {
 
     const [employees, setEmployees] = useState([])
+    const [email, setEmail] = useState('')
     const deleteEmployee = async (id) => {
         console.log('if', id)
         await axios.delete(`http://127.0.0.1:8000/api/employee/delete/${id}`).then(
@@ -22,6 +23,7 @@ const DoctorListApprrovment = (props) => {
     const ApproveEmployee = async (id) => {
             let formField = new FormData()
             formField.append('is_verified',true)
+            formField.append('email',email)
             await axios({
                 method: 'PUT',
                 url: `http://127.0.0.1:8000/api/employee/approve/update/${id}`,
@@ -52,7 +54,7 @@ const DoctorListApprrovment = (props) => {
             <Row className="index cardContainer">
                 {employees.map((emp) =>
                     <Col className="mb-5 mb-xl-0" xl="6">
-                        <Card className="shadow cardStyle">
+                        <Card className="shadow cardStyle1">
                             <CardHeader className="border-0">
                                 <Row className="align-items-center">
                                     <Col lg="6">
@@ -103,7 +105,9 @@ const DoctorListApprrovment = (props) => {
                                             <div className="col text-right btnnn">
                                                 <Button
                                                     color="primary"
-                                                    onClick={()=>{ApproveEmployee(emp.user_ptr_id)}}
+                                                    onClick={()=>{
+                                                        setEmail(emp.email)
+                                                        ApproveEmployee(emp.user_ptr_id)}}
                                                 >
                                                     Approve
                                                 </Button>

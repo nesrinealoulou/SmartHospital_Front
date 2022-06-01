@@ -1,4 +1,4 @@
-import React from "react"; //version<17
+import React, {useState} from "react"; //version<17
 import { useLocation, Route, Switch, Redirect } from "react-router-dom";
 // reactstrap components
 import { Container, Row, Col } from "reactstrap";
@@ -8,9 +8,11 @@ import AuthNavbar from "components/Navbars/AuthNavbar.js";
 import AuthFooter from "components/Footers/AuthFooter.js";
 
 import routes from "routes.js";
+import {useStepContext} from "@mui/material";
 
 const Auth = (props) => {
   const mainContent = React.useRef(null);
+  let isVerifyComponet = false
   const location = useLocation();
 
   React.useEffect(() => {
@@ -26,6 +28,11 @@ const Auth = (props) => {
   }, [location]);
 
   const getRoutes = (routes) => {
+    routes.map((prop, key) => {
+     /* if (prop.path === "/verifyOpt") {
+        isVerifyComponet = true
+      }*/
+    })
     return routes.map((prop, key) => {
       if (prop.layout === "/auth") {
         return (
@@ -44,7 +51,7 @@ const Auth = (props) => {
   return (
     <>
       <div className="main-content" ref={mainContent}>
-        <AuthNavbar />
+        <AuthNavbar isVerfiyComponet={isVerifyComponet}/>
         <div className="header bg-gradient-info py-7 py-lg-8">
           <div className="separator separator-bottom separator-skew zindex-100">
             <svg
