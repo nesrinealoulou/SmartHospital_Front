@@ -20,6 +20,7 @@ import ConsultationFormForDoctor from "./ConsultationFormForDoctor";
 import ConsultationView from "./ConsultationView";
 
 const CurrentConsultations = () => {
+
     const [cin, setCin] = useState("")
     const [firstName, setFirstName] = useState("")
     const [lastName, setLastName] = useState("")
@@ -37,24 +38,25 @@ const CurrentConsultations = () => {
     const [temperature, setTemperature] = useState(false)
     const [bloodPressure, setBloodPressure] = useState("")
     const [doctorNotes, setDoctorNotes] = useState("")
+    const [appointment, setAppointment] = useState("")
     const [prescriptionText, setPrescriptionText] = useState("")
 
 
-    const getPatient = async (id) => {
+    const deleteConsultation = async (id) => {
         console.log('if', id)
-        const response = await axios.get(`http://127.0.0.1:8000/api/patient/consultation/${id}`)
-        console.log('rr', response.data)
-        setCin(response.data.cin)
-        setFirstName(response.data.firstName)
-        setLastName(response.data.lastName)
-        console.log('rr',)
+        await axios.delete(`http://127.0.0.1:8000/api/consultation/delete/${id}`).then(
+            (res) => {
+                alert("consultation deleted successfully")
+                window.location.reload()
+            }
+        )
 
-        return response.data
     }
     const getConsultations = async () => {
         const response = await axios.get(`http://127.0.0.1:8000/api/consultations`)
         console.log(response.data,'cons')
-        setConsultations(response.data.filter(cons => cons.doctor.user_ptr_id === id))
+
+        setConsultations(response.data.filter(cons => cons.doctor.user_ptr_id === id && new Date(cons.appointmentDate)>= new Date()))
         console.log(consultations.data,'cons filter')
         console.log('cons', response.data.filter(cons => cons.doctor === id))
         console.log('')
@@ -76,7 +78,7 @@ const CurrentConsultations = () => {
                 <div className="col">
                     <Card style={{width: 1000, left: 20}} className="shadow">
                         <CardHeader className="border-0">
-                            <h3 className="mb-0">Your Patients List</h3>
+                            <h3 className="mb-0">Your Current Consultations</h3>
                         </CardHeader>
                         <Table className="align-items-center table-flush" responsive>
                             <thead className="thead-light">
@@ -162,15 +164,18 @@ const CurrentConsultations = () => {
                                                 idCons={idCons}
                                                 setidCons={setIdCons}
                                             />
-{/*
+
                                             <Button
                                                 className=" btn-icon"
                                                 color="danger"
                                                 size="sm"
                                                 type="button"
+
+                                                onClick={() => {
+                                                    deleteConsultation(cons.consultationId)}}
                                             >
                                                 <i className=" ni ni-fat-remove pt-1"></i>
-                                            </Button>*/}
+                                            </Button>
                                         </td>
                                     </tr>)
                             })}

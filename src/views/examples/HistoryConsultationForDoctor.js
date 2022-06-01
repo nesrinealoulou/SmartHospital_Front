@@ -3,33 +3,24 @@ import {
     Card,
     CardHeader,
     CardFooter,
-    DropdownMenu,
-    DropdownItem,
-    UncontrolledDropdown,
-    DropdownToggle,
-    Media,
     Pagination,
     PaginationItem,
     PaginationLink,
-    Progress,
     Table,
     Container,
-    Row,
-    UncontrolledTooltip,
 } from "reactstrap";
 // core components
 import Header from "components/Headers/Header.js";
-import { Button} from "reactstrap";
+import {Button} from "reactstrap";
 import {useEffect, useState} from "react";
-import {Dialog} from "@mui/material";
-import AppointmentForm from "./AppointmentForm";
-import {Link, useHistory} from "react-router-dom";
-import jwt_decode from "jwt-decode";
+import {useHistory} from "react-router-dom";
 import axios from "axios";
+import jwt_decode from "jwt-decode";
 import ConsultationFormForDoctor from "./ConsultationFormForDoctor";
 import ConsultationView from "./ConsultationView";
 
-const ConsultationHistory = () => {
+const CurrentConsultations = () => {
+
     const [cin, setCin] = useState("")
     const [firstName, setFirstName] = useState("")
     const [lastName, setLastName] = useState("")
@@ -65,9 +56,9 @@ const ConsultationHistory = () => {
         const response = await axios.get(`http://127.0.0.1:8000/api/consultations`)
         console.log(response.data,'cons')
 
-        setConsultations(response.data.filter(cons => cons.patient.user_ptr_id === id && new Date(cons.appointmentDate)< new Date()))
+        setConsultations(response.data.filter(cons => cons.doctor.user_ptr_id === id && new Date(cons.appointmentDate)< new Date()))
         console.log(consultations.data,'cons filter')
-        console.log('cons', response.data.filter(cons => cons.patient === id))
+        console.log('cons', response.data.filter(cons => cons.doctor === id))
         console.log('')
 
     }
@@ -92,9 +83,9 @@ const ConsultationHistory = () => {
                         <Table className="align-items-center table-flush" responsive>
                             <thead className="thead-light">
                             <tr style={{margin: 25}}>
-                                <th scope="col">Doctor Cin</th>
-                                <th scope="col">Doctor First Name</th>
-                                <th scope="col">Doctor Last Name</th>
+                                <th scope="col">Cin</th>
+                                <th scope="col">Patient First Name</th>
+                                <th scope="col">Patient Last Name</th>
                                 <th scope="col">Appointment Date</th>
                                 <th scope="col">Appointment time</th>
                                 <th scope="col">Actions</th>
@@ -104,12 +95,33 @@ const ConsultationHistory = () => {
                             {consultations.map((cons) => {
                                 return (
                                     <tr>
-                                        <td>{cons.doctor.information_ptr.cin}</td>
-                                        <td>{cons.doctor.information_ptr.firstName}</td>
-                                        <td>{cons.doctor.information_ptr.lastName}</td>
+                                        <td>{cons.patient.information_ptr.cin}</td>
+                                        <td>{cons.patient.information_ptr.firstName}</td>
+                                        <td>{cons.patient.information_ptr.lastName}</td>
                                         <td>{cons.appointmentTime}</td>
                                         <td>{cons.appointmentDate}</td>
                                         <td>
+                                            <Button
+                                                className=" btn-icon"
+                                                color="info"
+                                                size="sm"
+                                                type="button"
+                                                to="/Patient-profile"
+                                                onClick={() => {
+                                                    setOpenPopup(true)
+                                                    setIdCons(cons.consultationId)
+
+                                                }}
+                                            >
+
+                                                <i className=" ni ni-settings-gear-65 pt-1"></i>
+                                            </Button>
+                                            <ConsultationFormForDoctor
+                                                openPopup={openPopup}
+                                                setOpenPopup={setOpenPopup}
+                                                idCons={idCons}
+                                                setidCons={setIdCons}
+                                            />
                                             <Button
                                                 className=" btn-icon"
                                                 color="success"
@@ -152,6 +164,18 @@ const ConsultationHistory = () => {
                                                 idCons={idCons}
                                                 setidCons={setIdCons}
                                             />
+
+                                            <Button
+                                                className=" btn-icon"
+                                                color="danger"
+                                                size="sm"
+                                                type="button"
+
+                                                onClick={() => {
+                                                    deleteConsultation(cons.consultationId)}}
+                                            >
+                                                <i className=" ni ni-fat-remove pt-1"></i>
+                                            </Button>
                                         </td>
                                     </tr>)
                             })}
@@ -218,4 +242,4 @@ const ConsultationHistory = () => {
     );
 };
 
-export default ConsultationHistory;
+export default CurrentConsultations;

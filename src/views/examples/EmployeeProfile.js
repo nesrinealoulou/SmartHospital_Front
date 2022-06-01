@@ -132,16 +132,20 @@ const EmployeeProfile = () => {
                   </Row>
                   <div className="text-center">
                     <h3>
-                      {info.firstName}
+                      {info.firstName} {info.lastName}
                     </h3>
+                    <div className="h5 font-weight-300">
+                      <i className="ni location_pin mr-2"  />
+                      {employee.speciality}
+                    </div>
 
                     <div className="h5 font-weight-300">
                       <i className="ni location_pin mr-2"  />
                       {info.email}
                     </div>
+
                     <div className="h5 mt-4">
                       <i className="ni business_briefcase-24 mr-2" />
-
                     </div>
                     <hr className="my-4" />
                     <h2 color="primary">Add Your Profile Picture</h2>

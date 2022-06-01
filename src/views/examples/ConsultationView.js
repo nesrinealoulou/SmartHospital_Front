@@ -36,7 +36,7 @@ const ConsultationView = (props) => {
                 open={openPopup1}
                 aria-labelledby="form-dialog-title"
             >
-                <DialogTitle id="form-dialog-title">Appointment</DialogTitle>
+                <DialogTitle id="form-dialog-title">Consultation details</DialogTitle>
                 <DialogContent>
                     <div>
                         <h6 className="heading-small text-muted mb-4">

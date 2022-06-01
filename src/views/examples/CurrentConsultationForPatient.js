@@ -3,33 +3,24 @@ import {
     Card,
     CardHeader,
     CardFooter,
-    DropdownMenu,
-    DropdownItem,
-    UncontrolledDropdown,
-    DropdownToggle,
-    Media,
     Pagination,
     PaginationItem,
     PaginationLink,
-    Progress,
     Table,
     Container,
-    Row,
-    UncontrolledTooltip,
 } from "reactstrap";
 // core components
 import Header from "components/Headers/Header.js";
-import { Button} from "reactstrap";
+import {Button} from "reactstrap";
 import {useEffect, useState} from "react";
-import {Dialog} from "@mui/material";
-import AppointmentForm from "./AppointmentForm";
-import {Link, useHistory} from "react-router-dom";
-import jwt_decode from "jwt-decode";
+import {useHistory} from "react-router-dom";
 import axios from "axios";
+import jwt_decode from "jwt-decode";
 import ConsultationFormForDoctor from "./ConsultationFormForDoctor";
 import ConsultationView from "./ConsultationView";
 
-const ConsultationHistory = () => {
+const CurrentConsultationsForPatient = () => {
+
     const [cin, setCin] = useState("")
     const [firstName, setFirstName] = useState("")
     const [lastName, setLastName] = useState("")
@@ -65,9 +56,9 @@ const ConsultationHistory = () => {
         const response = await axios.get(`http://127.0.0.1:8000/api/consultations`)
         console.log(response.data,'cons')
 
-        setConsultations(response.data.filter(cons => cons.patient.user_ptr_id === id && new Date(cons.appointmentDate)< new Date()))
-        console.log(consultations.data,'cons filter')
-        console.log('cons', response.data.filter(cons => cons.patient === id))
+        setConsultations(response.data.filter(cons => cons.patient.user_ptr_id === id && new Date(cons.appointmentDate)>= new Date()))
+        console.log(consultations,'cons filter')
+        console.log('cons', response.data.filter(cons => cons.doctor === id))
         console.log('')
 
     }
@@ -87,7 +78,7 @@ const ConsultationHistory = () => {
                 <div className="col">
                     <Card style={{width: 1000, left: 20}} className="shadow">
                         <CardHeader className="border-0">
-                            <h3 className="mb-0">Your Consutation History</h3>
+                            <h3 className="mb-0">Your Current Consultations</h3>
                         </CardHeader>
                         <Table className="align-items-center table-flush" responsive>
                             <thead className="thead-light">
@@ -218,4 +209,4 @@ const ConsultationHistory = () => {
     );
 };
 
-export default ConsultationHistory;
+export default CurrentConsultationsForPatient;

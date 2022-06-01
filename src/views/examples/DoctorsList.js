@@ -4,6 +4,7 @@ import UserHeader from "../../components/Headers/UserHeader";
 import {useEffect, useState} from "react";
 import AppointmentForm from "./AppointmentForm";
 import axios from "axios";
+import {Link} from "@mui/material";
 
 const DoctorsList = (props) => {
 
@@ -66,6 +67,7 @@ const DoctorsList = (props) => {
                                             {emp.firstName} {emp.lastName}
                                             {/*<span className="font-weight-light">, 27</span>*/}
                                         </h3>
+                                        <h3> {emp.speciality}</h3>
                                         <div className="h5 font-weight-300 paragraph">
                                             <i className="ni location_pin mr-2"  />
                                             {emp.email}
@@ -90,17 +92,24 @@ const DoctorsList = (props) => {
                                                 idDoctor={idDoctor}
                                                 setIdDoctor={setIdDoctor}
                                             />
+
                                         </Row>
-                                        <Row>
+                                        {/*<Row>
                                             <div className="col text-right">
-                                                <Button
-                                                    color="primary"
-                                                    href="#pablo"
-                                                >
+
+                                                <Button color="primary"
+                                                        type="button"
+                                                        to="/Patient-profile">
                                                     view Profile
+                                                <Link to={`/admin/Employee-profile-for-patient/${emp.user_ptr_id}`}>
+
+
+                                                </Link>
+
                                                 </Button>
+
                                             </div>
-                                        </Row>
+                                        </Row>*/}
                                     </Col>
                                 </Row>
                             </CardHeader>

@@ -17,6 +17,9 @@ import ConsultationHistory from "./views/examples/ConsultationHistory";
 import CurrentConsultations from "./views/examples/currentConsultation";
 import VerfifyOpt from "./views/examples/VerifyOpt";
 import PatientProfileForDoctor from "./views/examples/PatientProfileForDoctor";
+import HistoryConsultationForDoctor from "./views/examples/HistoryConsultationForDoctor";
+import CurrentConsultationsForPatient from "./views/examples/CurrentConsultationForPatient";
+import EmployeeProfileForPatient from "./views/examples/EmployeeProfileForPatient";
 
 var routes = [
     {
@@ -25,7 +28,6 @@ var routes = [
         icon: "ni ni-single-02 text-yellow",
         component: home,
         layout: "/auth",
-        role:"employee"
 
     },
     {
@@ -34,7 +36,6 @@ var routes = [
         icon: "ni ni-single-02 text-yellow",
         component: home,
         layout: "/auth",
-        role:"patient"
 
     },
     {
@@ -63,31 +64,31 @@ var routes = [
     },
     {
         path: "/consultationsForDoctor",
-        name: "Consultations",
+        name: "Current Consultations",
         icon: "ni ni-single-02 text-yellow",
         component: CurrentConsultations,
         layout: "/admin",
         role:"employee"
     },
-    /*{
+    {
         path: "/consultation-history-for-doctor",
         name: "Consultations History",
         icon: "ni ni-single-02 text-yellow",
-        component: CurrentConsultations,
+        component: HistoryConsultationForDoctor,
         layout: "/admin",
         role:"employee"
     },
     {
-        path: "/consultation-history-for-patient",
-        name: "Consultation History",
+        path: "/current-consultation-for-patient",
+        name: "Current Consultations",
         icon: "ni ni-single-02 text-yellow",
-        component: ConsultationHistory,
+        component: CurrentConsultationsForPatient,
         layout: "/admin",
         role:"patient"
-    },*/
+    },
     {
-        path: "/consultations-for-patient",
-        name: "Consultations",
+        path: "/consultations-history--for-patient",
+        name: "Consultations History",
         icon: "ni ni-single-02 text-yellow",
         component: ConsultationHistory,
         layout: "/admin",
@@ -132,6 +133,12 @@ var routes = [
         component: EmployeeProfile,
         layout: "/admin",
         role:"employee"
+    },{
+        path: "/Employee-profile-for-patient/:id",
+        name: "Employee Profile",
+        icon: "ni ni-single-02 text-yellow",
+        component: EmployeeProfileForPatient,
+        layout: "/admin",
     },
     {
         path: "/Patient-list-by-staff",

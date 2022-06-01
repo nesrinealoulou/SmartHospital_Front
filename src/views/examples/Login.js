@@ -16,7 +16,7 @@ import {
     Col, NavItem, NavLink,
 } from "reactstrap";
 import {Link} from "react-router-dom";
-//localStorage.setItem('access_token', "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTY2MTc3NTMxMCwiaWF0IjoxNjUzOTk5MzEwLCJqdGkiOiI5NjlhYzI1ZjdjZGM0MTAyOGVhZDljZDkyOWY3NWQ1MiIsInVzZXJfaWQiOjJ9._vRN5iSa-PC8pS1zvh2AIxrdUXjHAwsjPnDPKC4iPtQ")
+localStorage.setItem('access_token',localStorage.getItem('refresh_token'))
 
 let  is_auth = localStorage.getItem('is_auth')
 let id =""
@@ -48,7 +48,7 @@ const Login = () => {
                 email: formData.email,
                 password: formData.password,
             }).then((res) => {
-            console.log('res',res)
+            alert('you are logged in successfully !')
             localStorage.setItem('access_token', res.data.access);
             localStorage.setItem('refresh_token', res.data.refresh);
             axiosInstance.defaults.headers['Authorization'] =
@@ -150,7 +150,7 @@ const Login = () => {
                         </Form>
                     </CardBody>
                 </Card>
-                <Row className="mt-3">
+                {/*<Row className="mt-3">
                     <Col xs="6">
                         <a
                             className="text-light"
@@ -160,7 +160,7 @@ const Login = () => {
                             <small>Forgot password?</small>
                         </a>
                     </Col>
-                </Row>
+                </Row>*/}
             </Col>
         </>
     );

@@ -24,7 +24,7 @@ const AppointmentForm = (props) => {
     const [patients, setPatients] = useState([])
     const [appointmentTime, setTime] = useState(null)
     let token = localStorage.getItem('access_token')
-    const decoded = jwt_decode(token, );
+    const decoded = jwt_decode(token);
     let id = decoded.user_id
     const addAppointment = async () => {
         let formField = new FormData()

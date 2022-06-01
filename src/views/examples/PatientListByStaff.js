@@ -144,9 +144,7 @@ const PatientListByStaff = () => {
                                                     size="sm"
                                                     type="button"
                                                     to="/Patient-profile"
-                                                    /*onClick={() => {setConsultedByDoctor(true)}}
-                                                    consultedByDoctor={consultedByDoctor}*/
-                                                    /*onClick={() => { setOpenPopup(true)}}*/
+
                                                 >
                                                     <i className=" ni ni-circle-08 pt-1"></i>
                                                 </Button>

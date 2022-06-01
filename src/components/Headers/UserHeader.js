@@ -6,11 +6,13 @@ const UserHeader = (props) => {
     const user = props.user;
     const edit = props.edit;
     const doc = props.doc;
+    const patient = props.patient;
     const consultedByDoctor = props.consultedByDoctor;
     const[isPatient,setIsPatient] = useState(user === 'patient')
     const[isDoctor,setIsDoctor] = useState(user === 'employee')
     const[NotEdited,setNotEdited] = useState(edit === 'edit')
-    const[IsDoctoAccess,isDoctorAccess] = useState(doc === 'doctor access')
+    const[isDoctoAccess,setIsDoctorAccess] = useState(doc === 'doctor access')
+    const[isPatientAccess,setIsPatientAccess] = useState(patient === 'doctor access')
     /*const[isNotConsultedByDoctor,setIsNotConsultedByDoctor] = useState(consultedByDoctor === false)*/
   return (
     <>
@@ -37,10 +39,14 @@ const UserHeader = (props) => {
                 {NotEdited && <p className="text-white mt-0 mb-5">
                 This is your profile page.You can see and manage your information
               </p> }
-                {isDoctorAccess
+                {isDoctoAccess
                 && <h1 className="display-3 text-white">Hello Doctor</h1>}
-                {isDoctorAccess
+                {isDoctoAccess
                 && <p className="text-white mt-0 mb-5">You can Take a Look to your patient Profile</p>}
+                {isPatientAccess
+                && <h1 className="display-3 text-white">Hello Patient</h1>}
+                {isPatientAccess
+                && <p className="text-white mt-0 mb-5">You can Take a Look to Your doctor Profile</p>}
                 <div className="text-center">
                     {NotEdited &&
                     <Link to="/admin/Employee-edit">
