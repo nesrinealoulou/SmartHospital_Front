@@ -20,17 +20,18 @@ const DoctorListApprrovment = (props) => {
         )
 
     }
-    const ApproveEmployee = async (id) => {
+    const ApproveEmployee = async (email) => {
             let formField = new FormData()
-            formField.append('is_verified',true)
             formField.append('email',email)
-            await axios({
-                method: 'PUT',
-                url: `http://127.0.0.1:8000/api/employee/approve/update/${id}`,
+        console.log('email',email)
+            const repsonse = await axios({
+                method: 'POST',
+                url: `http://127.0.0.1:8000/api/confirmAccount`,
                 data: formField,
                 headers: {"Content-type": "multipart/form-data"}
             }).then(response => {
                 alert("Employee is Approved!")
+
                 window.location.reload ()
 
 
@@ -52,7 +53,8 @@ const DoctorListApprrovment = (props) => {
         <>
             <UserHeader />
             <Row className="index cardContainer">
-                {employees.map((emp) =>
+                {employees.map((emp) =>{
+                    return(
                     <Col className="mb-5 mb-xl-0" xl="6">
                         <Card className="shadow cardStyle1">
                             <CardHeader className="border-0">
@@ -98,6 +100,7 @@ const DoctorListApprrovment = (props) => {
                                         <div className="h5 font-weight-300 paragraph">
                                             <i className="ni location_pin mr-2"  />
                                             {emp.email}
+
                                         </div>
                                     </Col>
                                     <Col lg="6">
@@ -106,8 +109,7 @@ const DoctorListApprrovment = (props) => {
                                                 <Button
                                                     color="primary"
                                                     onClick={()=>{
-                                                        setEmail(emp.email)
-                                                        ApproveEmployee(emp.user_ptr_id)}}
+                                                        ApproveEmployee(emp.email)}}
                                                 >
                                                     Approve
                                                 </Button>
@@ -133,7 +135,7 @@ const DoctorListApprrovment = (props) => {
                             </CardHeader>
                         </Card>
                     </Col>
-                )}
+                    )})}
             </Row>
         </>
     );
