@@ -21,7 +21,6 @@ const AppointmentForm = (props) => {
     const {openPopup, setOpenPopup } = props;
     const {idDoctor, setIdDoctor } = props;
     const [appointmentDate, setDate] = useState(null)
-    const [patients, setPatients] = useState([])
     const [appointmentTime, setTime] = useState(null)
     let token = localStorage.getItem('access_token')
     const decoded = jwt_decode(token);

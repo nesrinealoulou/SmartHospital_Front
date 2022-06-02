@@ -28,11 +28,6 @@ const Auth = (props) => {
   }, [location]);
 
   const getRoutes = (routes) => {
-    routes.map((prop, key) => {
-     /* if (prop.path === "/verifyOpt") {
-        isVerifyComponet = true
-      }*/
-    })
     return routes.map((prop, key) => {
       if (prop.layout === "/auth") {
         return (

@@ -29,7 +29,7 @@ const DoctorsList = (props) => {
             <Row className="index cardContainer">
                 {employees.map((emp) =>
                     <Col className="mb-5 mb-xl-0" xl="6">
-                        <Card className="shadow cardStyle2">
+                        <Card className="shadow cardStyle1">
                             <CardHeader className="border-0">
                                 <Row className="align-items-center">
                                     <Col lg="6">

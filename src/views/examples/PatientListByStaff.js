@@ -1,12 +1,8 @@
 import {
-    Badge,
+
     Card,
     CardHeader,
     CardFooter,
-    DropdownMenu,
-    DropdownItem,
-    UncontrolledDropdown,
-    DropdownToggle,
     Media,
     Pagination,
     PaginationItem,
@@ -14,8 +10,7 @@ import {
     Progress,
     Table,
     Container,
-    Row,
-    UncontrolledTooltip,
+
 } from "reactstrap";
 // core components
 import Header from "components/Headers/Header.js";
@@ -31,7 +26,7 @@ import ConsultationView from "./ConsultationView";
 
 const PatientListByStaff = () => {
     const [openPopup, setOpenPopup] = useState(false)
-   const [firstName, setFirstName] = useState("")
+    const [firstName, setFirstName] = useState("")
     /*const [lastName, setLastName] = useState("")
     const [file, setFile] = useState("")
     const [age, setAge] = useState("")
@@ -64,7 +59,6 @@ const PatientListByStaff = () => {
         patients.map(patient =>console.log("zzzz",patient.firstName))
 
     },[])
-
     return (
         <>
             <Header/>
@@ -83,20 +77,19 @@ const PatientListByStaff = () => {
                                 <th scope="col">First Name</th>
                                 <th scope="col">Last Name</th>
                                 <th scope="col">Gender</th>
-                                <th scope="col">Age</th>
+                                <th scope="col">birth day</th>
                                 <th scope="col">Nationality</th>
                                 <th scope="col">Actions</th>
                             </tr>
                             </thead>
                             <tbody>
-                            {patients.map((patient) => {
-                                if(patient.file != null) {
-                                    setIsFielFied(true)
-                                }
+                            {patients.map(patient => {
+
+                                console.log("eeeeeeeeeeellll")
                                 return (
                                     <tr>
                                         <td scope="row">
-                                            {!isFileField &&
+                                            {(patient.file == null)  &&
                                             <Media className="align-items-center">
                                                 <a
                                                     className="avatar rounded-circle mr-3"
@@ -113,7 +106,7 @@ const PatientListByStaff = () => {
                                                 </a>
                                             </Media>
                                             }
-                                            { isFileField &&
+                                            { (patient.file != null) &&
                                             <Media className="align-items-center">
                                                 <a
                                                     className="avatar rounded-circle mr-3"
@@ -123,8 +116,7 @@ const PatientListByStaff = () => {
                                                     <img
                                                         alt="..."
                                                         src={
-                                                            require("../../assets/img/theme/patientImg.png")
-                                                                .default
+                                                            patient.file
                                                         }
                                                     />
                                                 </a>
@@ -134,7 +126,7 @@ const PatientListByStaff = () => {
                                         <td>{patient.firstName}</td>
                                         <td>{patient.lastName}</td>
                                         <td>{patient.gender}</td>
-                                        <td>{patient.age}</td>
+                                        <td>{patient.date_of_Birth}</td>
                                         <td>{patient.nationality}</td>
                                         <td>
                                             <Link to={`/admin/Patient-profile-for-doctor/${patient.user_ptr_id}`}>
